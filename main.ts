@@ -82,6 +82,17 @@ namespace Microbit_Car {
         RIGHT_SPIN
     }
 
+    export enum enServo_PWM_ID {
+        //% blockId="Servo_S1" block="Servo_S1"
+        Servo_S1 = 0,
+        //% blockId="Servo_S2" block="Servo_S2"
+        Servo_S2,
+        //% blockId="Servo_S3" block="Servo_S3"
+        Servo_S3,
+        //% blockId="Servo_S4" block="Servo_S4"
+        Servo_S4,
+    }
+
     export enum enServo_ID_PWM {
         //% blockId="Servo_S5" block="Servo_S5"
         Servo_S5 = 0,
@@ -92,6 +103,8 @@ namespace Microbit_Car {
         //% blockId="Servo_S8" block="Servo_S8"
         Servo_S8,
     }
+
+    
 
     export enum enColor_WS2812 {
         //% blockId="Red" block="Red"
@@ -125,12 +138,10 @@ namespace Microbit_Car {
     //% blockGap=10
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function RGB_Car_Big(value: enColor_RGB): void {
-        
         let buf = pins.createBuffer(2);
         buf[0] = RGB_Light;
         buf[1] = value;
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
-
     }
 
     function BBEP_OFF():void{
@@ -138,7 +149,6 @@ namespace Microbit_Car {
         buf[0] = BUZZER_State;
         buf[1] = 0x00;
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
-
     }
 
     //% blockId=BEEP_Play block="BEEP_Play|value %value"
@@ -222,6 +232,34 @@ namespace Microbit_Car {
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
     }
 
+    //% blockId=Set_Servo_PWM block="Set_PWM_Servo(S1-S4)|servo %value|angle %angle"
+    //% weight=98
+    //% blockGap=10
+    //% angle.min=0 angle.max=180 
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function Set_Servo_PWM(value:enServo_PWM_ID,angle:number): void {
+        switch(value)
+        {
+            case enServo_PWM_ID.Servo_S1:
+                pins.servoWritePin(AnalogPin.P0, angle)
+                break
+
+            case enServo_PWM_ID.Servo_S2:
+                pins.servoWritePin(AnalogPin.P1, angle)
+                break
+
+            case enServo_PWM_ID.Servo_S3:
+                pins.servoWritePin(AnalogPin.P12, angle)
+                break
+
+            case enServo_PWM_ID.Servo_S4:
+                pins.servoWritePin(AnalogPin.P2, angle)
+                break
+
+        }
+        
+    }
+
     //% blockId=Set_WS2812_RGB_ALL block="Set_WS2812_RGB_ALL|state %value|color %color"
     //% weight=98
     //% blockGap=10
@@ -232,6 +270,7 @@ namespace Microbit_Car {
         buf[1] = value;
         buf[2] = color;
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
+        //basic.pause(10);//防止DMA太快,并没有出现
     }
 
     //% blockId=Set_WS2812_RGB_Alone block="Set_WS2812_RGB_Alone|RGB_index %index|state %value|color %color"
@@ -246,6 +285,7 @@ namespace Microbit_Car {
         buf[2] = value;
         buf[3] = color;
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
+        //basic.pause(10);//防止DMA太快,并没有出现
     }
 
 
