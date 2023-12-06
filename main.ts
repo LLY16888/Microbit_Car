@@ -133,6 +133,25 @@ namespace Microbit_Car {
         OPEN
     }
 
+    export enum enIRtrack_State {
+        //% blockId="Black_Line" block="Black_Line"
+        Black_Line = 0,
+        //% blockId="White_Line" block="White_Line"
+        White_Line
+    }
+
+    export enum enIRtrack_Position {
+        //% blockId="LeftMost" block="LeftMost"
+        LeftMost = 0,
+        //% blockId="Left" block="Left"
+        Left ,
+        //% blockId="Right" block="Right"
+        Right ,
+        //% blockId="RightMost" block="RightMost"
+        RightMost,
+    }
+
+
     //% blockId=RGB_Car_Big block="RGB_Car_Big|value %value"
     //% weight=98
     //% blockGap=10
@@ -249,11 +268,11 @@ namespace Microbit_Car {
                 break
 
             case enServo_PWM_ID.Servo_S3:
-                pins.servoWritePin(AnalogPin.P12, angle)
+                pins.servoWritePin(AnalogPin.P2, angle)
                 break
 
             case enServo_PWM_ID.Servo_S4:
-                pins.servoWritePin(AnalogPin.P2, angle)
+                pins.servoWritePin(AnalogPin.P12, angle)
                 break
 
         }
@@ -287,8 +306,6 @@ namespace Microbit_Car {
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
         //basic.pause(10);//防止DMA太快,并没有出现
     }
-
-
 
 
     //% block="k210_init_SerialPort"
@@ -343,6 +360,69 @@ namespace Microbit_Car {
 
     }
 
+
+    //获取红外传感器部分
+    //默认都检测到黑线，即信号为0
+    let x1 = 0;
+    let x2 = 0;
+    let x3 = 0;
+    let x4 = 0;
+    let irtrack_data = 0;
+
+    function get_irtrack():number
+    {
+        pins.i2cWriteNumber(Microbit_Car_ADDR,IRTRACKING,NumberFormat.UInt8LE,true);
+        let data = pins.i2cReadNumber(Microbit_Car_ADDR, NumberFormat.UInt8LE, false);
+        return data
+    }
+
+ 
+    //% blockId=Deal_irtrack_data block="Deal_irtrack_data(Patrol must be called)"
+    //% weight=87
+    //% blockGap=10
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function Deal_irtrack_data():void
+    {
+        irtrack_data = get_irtrack()
+        x1 = (irtrack_data & 8)>>3 
+        x2 = (irtrack_data & 4)>>2
+        x3 = (irtrack_data & 2)>>1 
+        x4 = (irtrack_data & 1)>>0
+    }
+
+    //% blockId=Track_Line block="POS %pos|check %value"
+    //% weight=87
+    //% blockGap=10
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function Track_Line(pos:enIRtrack_Position,value:enIRtrack_State):boolean
+    {
+        switch(pos)
+        {
+            case enIRtrack_Position.LeftMost :
+                if(x1 == value)
+                    return true
+                else return false
+
+            case enIRtrack_Position.Left :
+                if(x2 == value)
+                    return true
+                else return false
+
+            case enIRtrack_Position.Right :
+                if(x3 == value)
+                    return true
+                else return false
+
+            case enIRtrack_Position.RightMost :
+                if(x4 == value)
+                    return true
+                else return false
+        }
+
+
+    }
+
+    
 
 
 
