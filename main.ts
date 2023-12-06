@@ -390,7 +390,7 @@ namespace Microbit_Car {
         x4 = (irtrack_data & 1)>>0
     }
 
-    //% blockId=Track_Line block="POS %pos|check %value"
+    //% blockId=Track_Line block="Track_Line|POS %pos|check %value"
     //% weight=87
     //% blockGap=10
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
