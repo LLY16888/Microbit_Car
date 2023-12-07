@@ -11,7 +11,7 @@
     "files": [
         "README.md",
         "main.ts",
-        "_locales/zh-cn/Microbit_car-strings.json"
+        "_locales/zh-cn/Microbit Car-strings.json"
     ],
     "testFiles": [
         "test.ts"
