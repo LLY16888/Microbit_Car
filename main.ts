@@ -73,8 +73,8 @@ namespace Microbit_Car {
         BACK,
         //% blockId="LEFT" block="LEFT"
         LEFT,
-        //% blockId="Right" block="Right"
-        Right,
+        //% blockId="RIGHT" block="RIGHT"
+        RIGHT,
         //% blockId="LEFT_SPIN" block="LEFT_SPIN"
         LEFT_SPIN,
         //% blockId="RIGHT_SPIN" block="RIGHT_SPIN"
@@ -128,8 +128,8 @@ namespace Microbit_Car {
     export enum enWS2812_State {
         //% blockId="Close" block="Close"
         Close = 0,
-        //% blockId="OPEN" block="OPEN"
-        OPEN
+        //% blockId="Open" block="Open"
+        Open
     }
 
     export enum enIRtrack_State {
