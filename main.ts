@@ -186,6 +186,10 @@ namespace Microbit_Car {
     //% Timbre.min=0 Timbre.max=1000 
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function BEEP_Sound(Timbre:number,level:SOUND_LEVEL,time:number): void {
+        //范围限制
+        if(Timbre>1000) Timbre =1000;
+        else if(Timbre<0) Timbre = 0;
+
         let buf = pins.createBuffer(4);
         buf[0] = BUZZER_Sound;  
         buf[1] = (Timbre >>8)&0x0F;
@@ -203,6 +207,10 @@ namespace Microbit_Car {
     //% speed.min=0 speed.max=1000 
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Car_Sport(value: enCAR_STATE,speed:number): void {
+         //范围限制
+         if(speed>1000) speed =1000;
+         else if(speed<0) speed = 0;
+ 
         let buf = pins.createBuffer(4);
         buf[0] = CAR_STATE;
         buf[1] = value;
@@ -217,6 +225,13 @@ namespace Microbit_Car {
     //% speed_L.min=-1000 speed_L.max=1000 speed_R.min=-1000 speed_R.max=1000 
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Car_Sport_motor(speed_L:number,speed_R:number): void {
+        //范围限制
+        if(speed_L>1000) speed_L =1000;
+        else if(speed_L<-1000) speed_L = -1000;
+        if(speed_R>1000) speed_R =1000;
+        else if(speed_R<-1000) speed_R = -1000;
+
+
         let buf = pins.createBuffer(7);
         buf[0] = MOTOR_SPEED;
         
@@ -243,6 +258,10 @@ namespace Microbit_Car {
     //% angle.min=0 angle.max=180 
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Set_PWM_Servo(value:enServo_ID_PWM,angle:number): void {
+        //范围限制
+        if(angle>180) angle = 180;
+        else if(angle<0) angle = 0;
+
         let buf = pins.createBuffer(3);
         buf[0] = SERVO_STATE;
         buf[1] = value;
@@ -256,6 +275,10 @@ namespace Microbit_Car {
     //% angle.min=0 angle.max=180 
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Set_Servo_PWM(value:enServo_PWM_ID,angle:number): void {
+        //范围限制
+        if(angle>180) angle = 180;
+        else if(angle<0) angle = 0;
+
         switch(value)
         {
             case enServo_PWM_ID.Servo_S1:
@@ -297,6 +320,10 @@ namespace Microbit_Car {
     //% index.min=0  index.max=3
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Set_WS2812_RGB_Alone(index:number,value:enWS2812_State,color:enColor_WS2812): void {
+         //范围限制
+         if(index>3) index = 3;
+         else if(index<0) index = 0;
+
         let buf = pins.createBuffer(4);
         buf[0] = WS2812_Alone;
         buf[1] = index;
@@ -367,7 +394,6 @@ namespace Microbit_Car {
     let x3 = 0;
     let x4 = 0;
     let irtrack_data = 0;
-
     function get_irtrack():number
     {
         pins.i2cWriteNumber(Microbit_Car_ADDR,IRTRACKING,NumberFormat.UInt8LE,true);
