@@ -1,3 +1,4 @@
+
 {
 
   "Microbit_Car|block":"DIY小车",
@@ -68,9 +69,15 @@
   "Microbit_Car.enIRtrack_Position.LeftMost|block":"最左边",
   "Microbit_Car.enIRtrack_Position.Left|block":"左边",
   "Microbit_Car.enIRtrack_Position.Right|block":"右边",
-  "Microbit_Car.enIRtrack_Position.RightMost|block":"最右边"
-
+  "Microbit_Car.enIRtrack_Position.RightMost|block":"最右边",
   
+
+  "makerbit|block":"DIY小车红外遥控",
+  "{id:category}makerbit":"DIY小车红外遥控",
+  "makerbit.connectIrReceiver|block": "连接红外接收器到引脚 %pin",
+  "makerbit.onIrButton|block": "当按钮 | %button | %action",
+  "IrButtonAction.Pressed|block": "按下",
+  "IrButtonAction.Released|block": "松开"
 
 }
 

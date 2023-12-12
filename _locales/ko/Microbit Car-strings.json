@@ -68,7 +68,14 @@
   "Microbit_Car.enIRtrack_Position.LeftMost|block":"맨 왼쪽",
   "Microbit_Car.enIRtrack_Position.Left|block":"왼쪽",
   "Microbit_Car.enIRtrack_Position.Right|block":"오른쪽",
-  "Microbit_Car.enIRtrack_Position.RightMost|block":"맨 오른쪽"
+  "Microbit_Car.enIRtrack_Position.RightMost|block":"맨 오른쪽",
+
+  "makerbit|block":"DIY 소형차 적외선 원격 조종",
+  "{id:category}makerbit":"DIY 소형차 적외선 원격 조종",
+  "makerbit.connectIrReceiver|block": "적외선 수신기를 핀에 연결 %pin",
+  "makerbit.onIrButton|block": "버튼 | %button | %action",
+  "IrButtonAction.Pressed|block": "누르기",
+  "IrButtonAction.Released|block": "풀어"
 
   
 
