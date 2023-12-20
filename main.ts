@@ -81,7 +81,7 @@ namespace Microbit_Car {
         RIGHT_SPIN
     }
 
-    export enum enServo_PWM_ID {
+    export enum enServo_ID_PWM {
         //% blockId="Servo_S1" block="Servo_S1"
         Servo_S1 = 0,
         //% blockId="Servo_S2" block="Servo_S2"
@@ -91,19 +91,6 @@ namespace Microbit_Car {
         //% blockId="Servo_S4" block="Servo_S4"
         Servo_S4,
     }
-
-    export enum enServo_ID_PWM {
-        //% blockId="Servo_S5" block="Servo_S5"
-        Servo_S5 = 0,
-        //% blockId="Servo_S6" block="Servo_S6"
-        Servo_S6,
-        //% blockId="Servo_S7" block="Servo_S7"
-        Servo_S7,
-        //% blockId="Servo_S8" block="Servo_S8"
-        Servo_S8,
-    }
-
-    
 
     export enum enColor_WS2812 {
         //% blockId="Red" block="Red"
@@ -149,6 +136,18 @@ namespace Microbit_Car {
         //% blockId="RightMost" block="RightMost"
         RightMost,
     }
+
+    export enum Microbit_Pin_GPIO {
+      //% blockId="P0" block="P0"
+      P0 = 0,
+      //% blockId="P1" block="P1"
+      P1 = 1,
+      //% blockId="P2" block="P2"
+      P2 = 2,
+      //% blockId="P12" block="P12"
+      P12 = 3
+  }
+
 
 
     //% blockId=RGB_Car_Big block="RGB_Car_Big|value %value"
@@ -252,7 +251,7 @@ namespace Microbit_Car {
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
     }
 
-    //% blockId=Set_PWM_Servo block="Set_PWM_Servo(S5-S8)|servo %value|angle %angle"
+    //% blockId=Set_PWM_Servo block="Set_PWM_Servo(S1-S4)|servo %value|angle %angle"
     //% weight=98
     //% blockGap=10
     //% angle.min=0 angle.max=180 
@@ -269,37 +268,59 @@ namespace Microbit_Car {
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
     }
 
-    //% blockId=Set_Servo_PWM block="Set_PWM_Servo(S1-S4)|servo %value|angle %angle"
+    //% blockId=Microbit_GPIO_OutPut block="Microbit_GPIO_OutPut|Pin %value|value %price"
     //% weight=98
     //% blockGap=10
-    //% angle.min=0 angle.max=180 
+    //% price.min=0 price.max=1
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function Set_Servo_PWM(value:enServo_PWM_ID,angle:number): void {
-        //范围限制
-        if(angle>180) angle = 180;
-        else if(angle<0) angle = 0;
+    export function Microbit_GPIO_OutPut(value:Microbit_Pin_GPIO,price:number): void {
+      switch(value)
+      {
+        case Microbit_Pin_GPIO.P0:
+          pins.digitalWritePin(DigitalPin.P0, price)
+          break
 
-        switch(value)
-        {
-            case enServo_PWM_ID.Servo_S1:
-                pins.servoWritePin(AnalogPin.P0, angle)
-                break
+        case Microbit_Pin_GPIO.P1:
+          pins.digitalWritePin(DigitalPin.P1, price)
+          break
 
-            case enServo_PWM_ID.Servo_S2:
-                pins.servoWritePin(AnalogPin.P1, angle)
-                break
+        case Microbit_Pin_GPIO.P2:
+          pins.digitalWritePin(DigitalPin.P2, price)
+          break
 
-            case enServo_PWM_ID.Servo_S3:
-                pins.servoWritePin(AnalogPin.P2, angle)
-                break
+        case Microbit_Pin_GPIO.P12:
+          pins.digitalWritePin(DigitalPin.P12, price)
+          break
 
-            case enServo_PWM_ID.Servo_S4:
-                pins.servoWritePin(AnalogPin.P12, angle)
-                break
+      }
 
-        }
-        
     }
+
+    //% blockId=Microbit_GPIO_InPut block="Microbit_GPIO_InPut|Pin %value"
+    //% weight=98
+    //% blockGap=10
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function Microbit_GPIO_InPut(value:Microbit_Pin_GPIO): Number {
+      switch(value)
+      {
+        case Microbit_Pin_GPIO.P0:
+          return pins.digitalReadPin(DigitalPin.P0)
+          
+
+        case Microbit_Pin_GPIO.P1:
+          return pins.digitalReadPin(DigitalPin.P1)
+          
+
+        case Microbit_Pin_GPIO.P2:
+          return pins.digitalReadPin(DigitalPin.P2)
+         
+        case Microbit_Pin_GPIO.P12:
+          return pins.digitalReadPin(DigitalPin.P12)
+
+      }
+
+    }
+
 
     //% blockId=Set_WS2812_RGB_ALL block="Set_WS2812_RGB_ALL|state %value|color %color"
     //% weight=98
