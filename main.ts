@@ -300,7 +300,7 @@ namespace Microbit_Car {
     //% weight=98
     //% blockGap=10
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function Microbit_GPIO_InPut(value:Microbit_Pin_GPIO): Number {
+    export function Microbit_GPIO_InPut(value:Microbit_Pin_GPIO): number {
       switch(value)
       {
         case Microbit_Pin_GPIO.P0:
