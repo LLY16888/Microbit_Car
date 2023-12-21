@@ -17,8 +17,9 @@
   "Microbit_Car.Ultrasonic_CarV2|block":"microbit|V2|超声波返回(cm)",
   "Microbit_Car.Deal_irtrack_data|block":"接收巡线传感器的数据(巡线必须调用)",
   "Microbit_Car.Track_Line|block":"巡线传感器数据|巡线传感器的位置 %pos|检测到 %value",
-  "Microbit_Car.Microbit_GPIO_OutPut|block":"GPIO_输出模式|引脚 %value|写值(0-1) %price",
-  "Microbit_Car.Microbit_GPIO_InPut|block":"GPIO_输入模式|引脚 %value",
+  "Microbit_Car.Microbit_GPIO_OutPut|block":"GPIO_输出模式(数字值)|引脚 %value|写值(0-1) %price",
+  "Microbit_Car.Microbit_GPIO_OutPut_Analog|block":"GPIO_输出模式(模拟值)|引脚 %value|写值(0-1023) %price",
+  "Microbit_Car.Microbit_GPIO_InPut|block":"GPIO_输入模式|引脚 %value|读出的模式 %mode",
   
 
   "Microbit_Car.enColor_RGB.Red|block":"红色",
@@ -55,6 +56,8 @@
   "Microbit_Car.Microbit_Pin_GPIO.P1|block":"P1",
   "Microbit_Car.Microbit_Pin_GPIO.P2|block":"P2",
   "Microbit_Car.Microbit_Pin_GPIO.P12|block":"P12",
+  "Microbit_Car.Microbit_Pin_Read_Mode.Number|block":"数字值",
+  "Microbit_Car.Microbit_Pin_Read_Mode.Analog|block":"模拟值",
   "Microbit_Car.enColor_WS2812.Red|block":"红色",
   "Microbit_Car.enColor_WS2812.Green|block":"绿色",
   "Microbit_Car.enColor_WS2812.Blue|block":"蓝色",

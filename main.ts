@@ -148,6 +148,13 @@ namespace Microbit_Car {
       P12 = 3
   }
 
+  export enum Microbit_Pin_Read_Mode {
+    //% blockId="Number" block="Number"
+    Number = 0,
+    //% blockId="Analog" block="Analog"
+    Analog = 1
+}
+
 
 
     //% blockId=RGB_Car_Big block="RGB_Car_Big|value %value"
@@ -296,28 +303,80 @@ namespace Microbit_Car {
 
     }
 
-    //% blockId=Microbit_GPIO_InPut block="Microbit_GPIO_InPut|Pin %value"
+    //% blockId=Microbit_GPIO_OutPut_Analog block="Microbit_GPIO_OutPut_Analog|Pin %value|value %price"
     //% weight=98
     //% blockGap=10
+    //% price.min=0 price.max=1023
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function Microbit_GPIO_InPut(value:Microbit_Pin_GPIO): number {
+    export function Microbit_GPIO_OutPut_Analog(value:Microbit_Pin_GPIO,price:number): void {
       switch(value)
       {
         case Microbit_Pin_GPIO.P0:
-          return pins.digitalReadPin(DigitalPin.P0)
-          
+          pins.analogWritePin(AnalogPin.P0, price)
+          break
 
         case Microbit_Pin_GPIO.P1:
-          return pins.digitalReadPin(DigitalPin.P1)
-          
+          pins.analogWritePin(AnalogPin.P1, price)
+          break
 
         case Microbit_Pin_GPIO.P2:
-          return pins.digitalReadPin(DigitalPin.P2)
-         
+          pins.analogWritePin(AnalogPin.P2, price)
+          break
+
         case Microbit_Pin_GPIO.P12:
-          return pins.digitalReadPin(DigitalPin.P12)
+          pins.analogWritePin(AnalogPin.P12, price)
+          break
 
       }
+
+    }
+
+    //% blockId=Microbit_GPIO_InPut block="Microbit_GPIO_InPut|Pin %value|Read_Mode %mode"
+    //% weight=98
+    //% blockGap=10
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function Microbit_GPIO_InPut(value:Microbit_Pin_GPIO,mode:Microbit_Pin_Read_Mode): number {
+      if(mode == Microbit_Pin_Read_Mode.Number)
+      {
+        switch(value)
+        {
+          case Microbit_Pin_GPIO.P0:
+            return pins.digitalReadPin(DigitalPin.P0)
+            
+
+          case Microbit_Pin_GPIO.P1:
+            return pins.digitalReadPin(DigitalPin.P1)
+            
+
+          case Microbit_Pin_GPIO.P2:
+            return pins.digitalReadPin(DigitalPin.P2)
+          
+          case Microbit_Pin_GPIO.P12:
+            return pins.digitalReadPin(DigitalPin.P12)
+
+        }
+      }
+      else if(mode == Microbit_Pin_Read_Mode.Analog)
+      {
+        switch(value)
+        {
+          case Microbit_Pin_GPIO.P0:
+            return pins.analogReadPin(AnalogPin.P0)
+            
+
+          case Microbit_Pin_GPIO.P1:
+            return pins.analogReadPin(AnalogPin.P1)
+            
+
+          case Microbit_Pin_GPIO.P2:
+            return pins.analogReadPin(AnalogPin.P2)
+          
+          case Microbit_Pin_GPIO.P12:
+            return pins.analogReadPin(AnalogPin.P12)
+
+        }
+      }
+      return 0
 
     }
 
