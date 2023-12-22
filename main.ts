@@ -57,7 +57,7 @@ namespace Microbit_Car {
     //     Music5
     // }
 
-    export enum SOUND_LEVEL {
+    enum SOUND_LEVEL {
         //% blockId="LEVEL1" block="LEVEL1"
         LEVEL1 = 0x02,
         //% blockId="LEVEL2" block="LEVEL2"
@@ -159,7 +159,7 @@ namespace Microbit_Car {
 
 
 
-    //% blockId=RGB_Car_Big block="RGB_Car_Big|value %value"
+    //% blockId=RGB_Car_Big block="Car headlight|value %value"
     //% weight=98
     //% blockGap=10
     //% group="LED control"
@@ -511,7 +511,7 @@ namespace Microbit_Car {
         x4 = (irtrack_data & 1)>>0
     }
 
-    //% blockId=Track_Line block="Track_Line|POS %pos|check %value"
+    //% blockId=Track_Line block="IR_Line_Sensor position %pos|color %value"
     //% weight=87
     //% blockGap=10
     //% group="Tracking sensor"
