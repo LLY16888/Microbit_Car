@@ -1,4 +1,4 @@
-//% blockId=Microbit_Car block="DIY_Car"
+//% blockId=Microbit_Car block="ICBANQ RC_CAR" icon="\uf1b9"
 //%color="5c6300" weight=25
 namespace Microbit_Car {
 
@@ -24,6 +24,8 @@ namespace Microbit_Car {
         Blue,
         //% blockId="Yellow" block="Yellow"
         Yellow,
+        //% blockId="Orange" block="Orange"
+        Orange=3,
         //% blockId="Purper" block="Purper"
         Purper,
         //% blockId="Lake" block="Lake"
@@ -34,26 +36,26 @@ namespace Microbit_Car {
         OFF
     }
 
-    export enum BEEP_MUSIC {
-        //% blockId="OFF" block="OFF"
-        OFF = 0,
-        //% blockId="ON" block="ON"
-        ON,
-        //% blockId="Sound1" block="Sound1"
-        Sound1,
-        //% blockId="Sound2" block="Sound2"
-        Sound2,
-        //% blockId="Music1" block="Music1"
-        Music1,
-        //% blockId="Music2" block="Music2"
-        Music2,
-        //% blockId="Music3" block="Music3"
-        Music3,
-        //% blockId="Music4" block="Music4"
-        Music4,
-        //% blockId="Music5" block="Music5"
-        Music5
-    }
+    // export enum BEEP_MUSIC {
+    //     //% blockId="OFF" block="OFF"
+    //     OFF = 0,
+    //     //% blockId="ON" block="ON"
+    //     ON,
+    //     //% blockId="Sound1" block="Sound1"
+    //     Sound1,
+    //     //% blockId="Sound2" block="Sound2"
+    //     Sound2,
+    //     //% blockId="Music1" block="Music1"
+    //     Music1,
+    //     //% blockId="Music2" block="Music2"
+    //     Music2,
+    //     //% blockId="Music3" block="Music3"
+    //     Music3,
+    //     //% blockId="Music4" block="Music4"
+    //     Music4,
+    //     //% blockId="Music5" block="Music5"
+    //     Music5
+    // }
 
     export enum SOUND_LEVEL {
         //% blockId="LEVEL1" block="LEVEL1"
@@ -160,6 +162,7 @@ namespace Microbit_Car {
     //% blockId=RGB_Car_Big block="RGB_Car_Big|value %value"
     //% weight=98
     //% blockGap=10
+    //% group="LED control"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function RGB_Car_Big(value: enColor_RGB): void {
         let buf = pins.createBuffer(2);
@@ -175,23 +178,24 @@ namespace Microbit_Car {
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
     }
 
-    //% blockId=BEEP_Play block="BEEP_Play|value %value"
-    //% weight=98
-    //% blockGap=10
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function BEEP_Play(value: BEEP_MUSIC): void {
-        let buf = pins.createBuffer(2);
-        buf[0] = BUZZER_State;
-        buf[1] = value;
-        pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
-    }
+    // //% blockId=BEEP_Play block="BEEP_Play|value %value"
+    // //% weight=98
+    // //% blockGap=10
+    // //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    // export function BEEP_Play(value: BEEP_MUSIC): void {
+    //     let buf = pins.createBuffer(2);
+    //     buf[0] = BUZZER_State;
+    //     buf[1] = value;
+    //     pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
+    // }
 
-    //% blockId=BEEP_Sound block="BEEP_Sound|Timbre %Timbre |Sound_level %level|time(ms) %time"
+    //% blockId=BEEP_Sound block="Play buzzer sound %Timbre |time(ms) %time"
     //% weight=98
     //% blockGap=10
+    //% group="Buzzer control"
     //% Timbre.min=0 Timbre.max=1000 
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function BEEP_Sound(Timbre:number,level:SOUND_LEVEL,time:number): void {
+    export function BEEP_Sound(Timbre:number,time:number): void {
         //范围限制
         if(Timbre>1000) Timbre =1000;
         else if(Timbre<0) Timbre = 0;
@@ -200,16 +204,17 @@ namespace Microbit_Car {
         buf[0] = BUZZER_Sound;  
         buf[1] = (Timbre >>8)&0x0F;
         buf[2] = Timbre & 0x00FF;
-        buf[3] = level;
+        buf[3] = SOUND_LEVEL.LEVEL1; //默认这个
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
 
         basic.pause(time);//响多久
         BBEP_OFF();
     }
 
-    //% blockId=Car_Sport block="Car_Sport|value %value|speed %speed"
+    //% blockId=Car_Sport block="Car move|value %value|speed %speed"
     //% weight=98
     //% blockGap=10
+    //% group="Motor control"
     //% speed.min=0 speed.max=1000 
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Car_Sport(value: enCAR_STATE,speed:number): void {
@@ -225,9 +230,10 @@ namespace Microbit_Car {
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
     }
 
-    //% blockId=Car_Sport_motor block="Car_Sport_motor|L_Motor %speed_L|R_Motor %speed_R"
+    //% blockId=Car_Sport_motor block="Set DC Motor|Left speed %speed_L|Right speed %speed_R"
     //% weight=98
     //% blockGap=10
+    //% group="Motor control"
     //% speed_L.min=-1000 speed_L.max=1000 speed_R.min=-1000 speed_R.max=1000 
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Car_Sport_motor(speed_L:number,speed_R:number): void {
@@ -261,6 +267,7 @@ namespace Microbit_Car {
     //% blockId=Set_PWM_Servo block="Set_PWM_Servo(S1-S4)|servo %value|angle %angle"
     //% weight=98
     //% blockGap=10
+    //% group="Servo control"
     //% angle.min=0 angle.max=180 
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Set_PWM_Servo(value:enServo_ID_PWM,angle:number): void {
@@ -278,6 +285,7 @@ namespace Microbit_Car {
     //% blockId=Microbit_GPIO_OutPut block="Microbit_GPIO_OutPut|Pin %value|value %price"
     //% weight=98
     //% blockGap=10
+    //% group="PIN control"
     //% price.min=0 price.max=1
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Microbit_GPIO_OutPut(value:Microbit_Pin_GPIO,price:number): void {
@@ -306,6 +314,7 @@ namespace Microbit_Car {
     //% blockId=Microbit_GPIO_OutPut_Analog block="Microbit_GPIO_OutPut_Analog|Pin %value|value %price"
     //% weight=98
     //% blockGap=10
+    //% group="PIN control"
     //% price.min=0 price.max=1023
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Microbit_GPIO_OutPut_Analog(value:Microbit_Pin_GPIO,price:number): void {
@@ -334,6 +343,7 @@ namespace Microbit_Car {
     //% blockId=Microbit_GPIO_InPut block="Microbit_GPIO_InPut|Pin %value|Read_Mode %mode"
     //% weight=98
     //% blockGap=10
+    //% group="PIN control"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Microbit_GPIO_InPut(value:Microbit_Pin_GPIO,mode:Microbit_Pin_Read_Mode): number {
       if(mode == Microbit_Pin_Read_Mode.Number)
@@ -381,9 +391,10 @@ namespace Microbit_Car {
     }
 
 
-    //% blockId=Set_WS2812_RGB_ALL block="Set_WS2812_RGB_ALL|state %value|color %color"
+    //% blockId=Set_WS2812_RGB_ALL block="Set all bottom LED|state %value|color %color"
     //% weight=98
     //% blockGap=10
+    //% group="LED control"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Set_WS2812_RGB_ALL(value:enWS2812_State,color:enColor_WS2812): void {
         let buf = pins.createBuffer(3);
@@ -394,9 +405,10 @@ namespace Microbit_Car {
         //basic.pause(10);//防止DMA太快,并没有出现
     }
 
-    //% blockId=Set_WS2812_RGB_Alone block="Set_WS2812_RGB_Alone|RGB_index %index|state %value|color %color"
+    //% blockId=Set_WS2812_RGB_Alone block="Set bottom LED|number %index|state %value|color %color"
     //% weight=98
     //% blockGap=10
+    //% group="LED control"
     //% index.min=0  index.max=3
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Set_WS2812_RGB_Alone(index:number,value:enWS2812_State,color:enColor_WS2812): void {
@@ -416,6 +428,7 @@ namespace Microbit_Car {
 
     //% block="k210_init_SerialPort"
     //% color="#006400"
+    //% group="K210 sensor"
     export function k210_init_SerialPort () 
     {
         serial.redirect(
@@ -429,6 +442,7 @@ namespace Microbit_Car {
     //% blockId=Ultrasonic_Car block="ultrasonic return distance(cm)"
     //% weight=87
     //% blockGap=10
+    //% group="Sonar sensor"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Ultrasonic_Car(): number {
 
@@ -452,6 +466,7 @@ namespace Microbit_Car {
     //% blockId=Ultrasonic_CarV2 block="ultrasonic for V2 return distance(cm)"
     //% weight=87
     //% blockGap=10
+    //% group="Sonar sensor"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Ultrasonic_CarV2(): number {
         pins.setPull(DigitalPin.P15, PinPullMode.PullNone);
@@ -482,9 +497,10 @@ namespace Microbit_Car {
     }
 
  
-    //% blockId=Deal_irtrack_data block="Deal_irtrack_data(Patrol must be called)"
+    //% blockId=Deal_irtrack_data block="IR_Line_Sensor detecting"
     //% weight=87
     //% blockGap=10
+    //% group="Tracking sensor"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Deal_irtrack_data():void
     {
@@ -498,6 +514,7 @@ namespace Microbit_Car {
     //% blockId=Track_Line block="Track_Line|POS %pos|check %value"
     //% weight=87
     //% blockGap=10
+    //% group="Tracking sensor"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Track_Line(pos:enIRtrack_Position,value:enIRtrack_State):boolean
     {
@@ -577,7 +594,7 @@ const enum IrProtocol {
   NEC = 1,
 }
 
-//% weight=10 color=#008B00 icon="\uf1eb" block="DIYCar_IR_V2"
+//% weight=10 color=#008B00 icon="\uf1eb" block="ICBANQ RC_CAR_IR"
 namespace makerbit {
   let irState: IrState;
 

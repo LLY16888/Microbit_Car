@@ -1,11 +1,19 @@
 
 {
 
-  "Microbit_Car|block":"DIY小车",
-  "{id:category}Microbit_Car":"DIY小车",
+  "Microbit_Car|block":"ICBANQ RC小车",
+  "{id:category}Microbit_Car":"ICBANQ RC小车",
+  
+  "{id:group}LED control": "车灯控制",
+  "{id:group}Buzzer control": "蜂鸣器控制",
+  "{id:group}Motor control": "电机控制",
+  "{id:group}Servo control": "舵机控制",
+  "{id:group}PIN control": "引脚控制",
+  "{id:group}Tracking sensor": "巡线传感器",
+  "{id:group}K210 sensor": "k210传感器",
+  "{id:group}Sonar sensor": "超声波传感器",
 
   "Microbit_Car.RGB_Car_Big|block":"小车大灯|选择车灯颜色 %value",
-  "Microbit_Car.BEEP_Play|block":"蜂鸣器播放音乐|选择播放的声音 %value",
   "Microbit_Car.BEEP_Sound|block":"自定义一个音调|音色 %Timbre |等级 %level|鸣叫时间(ms) %time",
   "Microbit_Car.Car_Sport|block":"小车运动|状态 %value|速度 %speed",
   "Microbit_Car.Car_Sport_motor|block":"控制电机|左电机速度 %speed_L|右电机速度 %speed_R",
@@ -26,18 +34,12 @@
   "Microbit_Car.enColor_RGB.Green|block":"绿色",
   "Microbit_Car.enColor_RGB.Blue|block":"蓝色",
   "Microbit_Car.enColor_RGB.Yellow|block":"黄色",
+  "Microbit_Car.enColor_RGB.Orange|block":"橙色",
   "Microbit_Car.enColor_RGB.Purper|block":"紫色",
   "Microbit_Car.enColor_RGB.Lake|block":"靛蓝色",
   "Microbit_Car.enColor_RGB.White|block":"白色",
   "Microbit_Car.BEEP_MUSIC.OFF|block":"关闭鸣叫",
   "Microbit_Car.BEEP_MUSIC.ON|block":"鸣叫",
-  "Microbit_Car.BEEP_MUSIC.Sound1|block":"音调1",
-  "Microbit_Car.BEEP_MUSIC.Sound2|block":"音调2",
-  "Microbit_Car.BEEP_MUSIC.Music1|block":"音乐1",
-  "Microbit_Car.BEEP_MUSIC.Music2|block":"音乐2",
-  "Microbit_Car.BEEP_MUSIC.Music3|block":"音乐3",
-  "Microbit_Car.BEEP_MUSIC.Music4|block":"音乐4",
-  "Microbit_Car.BEEP_MUSIC.Music5|block":"音乐5",
   "Microbit_Car.SOUND_LEVEL.LEVEL1|block":"等级1",
   "Microbit_Car.SOUND_LEVEL.LEVEL2|block":"等级2",
   "Microbit_Car.SOUND_LEVEL.LEVEL3|block":"等级3",
@@ -77,8 +79,8 @@
   "Microbit_Car.enIRtrack_Position.RightMost|block":"最右边",
   
 
-  "makerbit|block":"DIY小车红外遥控",
-  "{id:category}makerbit":"DIY小车红外遥控",
+  "makerbit|block":"ICBANQ 遥控车遥控器",
+  "{id:category}makerbit":"ICBANQ 遥控车遥控器",
   "makerbit.connectIrReceiver|block": "连接红外接收器到引脚 %pin",
   "makerbit.onIrButton|block": "当按钮 | %button | %action",
   "IrButtonAction.Pressed|block": "按下",
