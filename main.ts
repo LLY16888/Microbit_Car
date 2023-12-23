@@ -1,7 +1,6 @@
-//% blockId=Microbit_Car block="ICBANQ RC_CAR" icon="\uf1b9"
+//% blockId=Microbit_Car block="ICBANQ RC_CAR" icon="\uf1ba"
 //%color="5c6300" weight=25
 namespace Microbit_Car {
-
     //I2C addr
     const Microbit_Car_ADDR = 0x11
     //reg
