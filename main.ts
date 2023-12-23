@@ -14,6 +14,8 @@ namespace Microbit_Car {
     const WS2812_ALL = 0x07
     const WS2812_Alone =  0x08
     const IRTRACKING = 0x0A
+    const RGB_Light_Left = 0x0B
+    const RGB_Light_Right = 0x0C
 
     export enum enColor_RGB {
         //% blockId="Red" block="Red"
@@ -170,6 +172,30 @@ namespace Microbit_Car {
         buf[1] = value;
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
     }
+
+    //% blockId=RGB_Car_Big_Left block="Car headlight Left|value %value"
+    //% weight=98
+    //% blockGap=10
+    //% group="LED control"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function RGB_Car_Big_Left(value: enColor_RGB): void {
+      let buf = pins.createBuffer(2);
+      buf[0] = RGB_Light_Left;
+      buf[1] = value;
+      pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
+  }
+
+    //% blockId=RGB_Car_Big_Right block="Car headlight Right|value %value"
+    //% weight=98
+    //% blockGap=10
+    //% group="LED control"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function RGB_Car_Big_Right(value: enColor_RGB): void {
+      let buf = pins.createBuffer(2);
+      buf[0] = RGB_Light_Right;
+      buf[1] = value;
+      pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
+  }
 
     function BBEP_OFF():void{
         let buf = pins.createBuffer(2);
@@ -426,17 +452,6 @@ namespace Microbit_Car {
     }
 
 
-    //% block="k210_init_SerialPort"
-    //% color="#006400"
-    //% group="K210 sensor"
-    export function k210_init_SerialPort () 
-    {
-        serial.redirect(
-        SerialPin.P13,
-        SerialPin.P14,
-        BaudRate.BaudRate115200
-        )
-    }
 
 
     //% blockId=Ultrasonic_Car block="ultrasonic return distance(cm)"
@@ -496,6 +511,23 @@ namespace Microbit_Car {
         return data
     }
 
+    //% blockId=Save_Tracking_value block="Save Tracking Value |position %pos"
+    //% weight=87
+    //% blockGap=10
+    //% group="Tracking sensor"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function Save_Tracking_value(pos:enIRtrack_Position):number
+    {
+      switch(pos)
+        {
+            case enIRtrack_Position.LeftMost : return x1 
+            case enIRtrack_Position.Left : return x2 
+            case enIRtrack_Position.Right : return x3 
+            case enIRtrack_Position.RightMost : return x4 
+        }
+
+    }
+
  
     //% blockId=Deal_irtrack_data block="IR_Line_Sensor detecting"
     //% weight=87
@@ -544,6 +576,18 @@ namespace Microbit_Car {
 
     }
 
+    
+    //% block="k210_init_SerialPort"
+    //% color="#006400"
+    //% group="K210 sensor"
+    export function k210_init_SerialPort () 
+    {
+        serial.redirect(
+        SerialPin.P13,
+        SerialPin.P14,
+        BaudRate.BaudRate115200
+        )
+    }
     
 
 

@@ -13,6 +13,8 @@
   "{id:group}Sonar sensor": "초음파 센서",
 
   "Microbit_Car.RGB_Car_Big|block":"작은 전조등|헤드라이트 색상 선택 %value",
+  "Microbit_Car.RGB_Car_Big_Left|block":"작은 전조등(Left)|헤드라이트 색상 선택 %value",
+  "Microbit_Car.RGB_Car_Big_Right|block":"작은 전조등(Right)|헤드라이트 색상 선택 %value",
   "Microbit_Car.BEEP_Sound|block":"부저 소리 %Timbre |음을 시간(ms) %time 동안 재생",
   "Microbit_Car.Car_Sport|block":"자동차 움직이기 %value|속도 %speed",
   "Microbit_Car.Car_Sport_motor|block":"왼쪽 바퀴|속도  %speed_L|오른쪽 바퀴 속도 %speed_R",
@@ -23,7 +25,8 @@
   "Microbit_Car.Ultrasonic_Car|block":"초음파 센서 거리 측정값(cm)",
   "Microbit_Car.Ultrasonic_CarV2|block":"[V2] 초음파 센서 거리 측정값(cm)",
   "Microbit_Car.Deal_irtrack_data|block":"적외선 라인 센서 측정하기",
-  "Microbit_Car.Track_Line|block":"적외선 라인 센서 %pos|감지색 %value 선",
+  "Microbit_Car.Track_Line|block":"적외선 라인 센서 %pos|감지색 %value ",
+  "Microbit_Car.Save_Tracking_value|block":"저장 적외선 라인 센서 %pos",
   "Microbit_Car.Microbit_GPIO_OutPut|block":"GPIO(출력 모드 숫자값)|발돋움 %value|쓰기 값(0-1) %price",
   "Microbit_Car.Microbit_GPIO_OutPut_Analog|block":"GPIO(출력 모드 아날로그 값)|발돋움 %value|쓰기 값(0-1023) %price",
   "Microbit_Car.Microbit_GPIO_InPut|block":"GPIO(입력 모드)|발돋움 %value|읽기 모드 %mode",
