@@ -11,6 +11,7 @@
   "{id:group}Tracking sensor": "순선 센서",
   "{id:group}K210 sensor": "k210 센서",
   "{id:group}Sonar sensor": "초음파 센서",
+  "{id:group}Other": "기타",
 
   "Microbit_Car.RGB_Car_Big|block":"작은 전조등|헤드라이트 색상 선택 %value",
   "Microbit_Car.RGB_Car_Big_Left|block":"작은 전조등(Left)|헤드라이트 색상 선택 %value",
@@ -30,6 +31,7 @@
   "Microbit_Car.Microbit_GPIO_OutPut|block":"GPIO(출력 모드 숫자값)|발돋움 %value|쓰기 값(0-1) %price",
   "Microbit_Car.Microbit_GPIO_OutPut_Analog|block":"GPIO(출력 모드 아날로그 값)|발돋움 %value|쓰기 값(0-1023) %price",
   "Microbit_Car.Microbit_GPIO_InPut|block":"GPIO(입력 모드)|발돋움 %value|읽기 모드 %mode",
+  "Microbit_Car.Version_Read|block":"버전 번호",
 
   "Microbit_Car.enColor_RGB.Red|block":"빨강",
   "Microbit_Car.enColor_RGB.Green|block":"그린",

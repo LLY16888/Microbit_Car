@@ -12,6 +12,7 @@
   "{id:group}Tracking sensor": "巡线传感器",
   "{id:group}K210 sensor": "k210传感器",
   "{id:group}Sonar sensor": "超声波传感器",
+  "{id:group}Other": "其它",
 
   "Microbit_Car.RGB_Car_Big|block":"小车大灯(同时)|选择车灯颜色 %value",
   "Microbit_Car.RGB_Car_Big_Left|block":"小车大灯(左边)|选择车灯颜色 %value",
@@ -31,6 +32,7 @@
   "Microbit_Car.Microbit_GPIO_OutPut|block":"GPIO_输出模式(数字值)|引脚 %value|写值(0-1) %price",
   "Microbit_Car.Microbit_GPIO_OutPut_Analog|block":"GPIO_输出模式(模拟值)|引脚 %value|写值(0-1023) %price",
   "Microbit_Car.Microbit_GPIO_InPut|block":"GPIO_输入模式|引脚 %value|读出的模式 %mode",
+  "Microbit_Car.Version_Read|block":"版本号",
   
 
   "Microbit_Car.enColor_RGB.Red|block":"红色",

@@ -4,6 +4,7 @@ namespace Microbit_Car {
     //I2C addr
     const Microbit_Car_ADDR = 0x11
     //reg
+    const VERSION_REG = 0xFE
     const RGB_Light = 0x01
     const BUZZER_State = 0x02
     const BUZZER_Sound = 0x03
@@ -572,9 +573,7 @@ namespace Microbit_Car {
                 else return false
         }
 
-
     }
-
     
     //% block="k210_init_SerialPort"
     //% color="#006400"
@@ -587,6 +586,18 @@ namespace Microbit_Car {
         BaudRate.BaudRate115200
         )
     }
+
+    //% blockId=Version_Read block="Version number"
+    //% color="#ff5656"
+    //% group="Other"
+    export function Version_Read ():number
+    {
+      pins.i2cWriteNumber(Microbit_Car_ADDR,VERSION_REG,NumberFormat.UInt8LE,true);
+      let data = pins.i2cReadNumber(Microbit_Car_ADDR, NumberFormat.UInt8LE, false);
+      data = data / 10;//最后一位是小数
+      return data
+    }
+
     
 
 
