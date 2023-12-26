@@ -171,6 +171,14 @@ namespace Microbit_Car {
         buf[0] = RGB_Light;
         buf[1] = value;
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
+        if(value == enColor_RGB.OFF)
+        {
+          for(let i = 0;i<2;i++)
+          {
+            pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);//发送多次，防止橙色
+            basic.pause(1)//延迟1ms
+          }
+        }
     }
 
     //% blockId=RGB_Car_Big_Left block="Car headlight Left|value %value"
@@ -183,6 +191,14 @@ namespace Microbit_Car {
       buf[0] = RGB_Light_Left;
       buf[1] = value;
       pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
+      if(value == enColor_RGB.OFF)
+        {
+          for(let i = 0;i<2;i++)
+          {
+            pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);//发送多次，防止橙色
+            basic.pause(1)//延迟1ms
+          }
+        }
   }
 
     //% blockId=RGB_Car_Big_Right block="Car headlight Right|value %value"
@@ -195,6 +211,14 @@ namespace Microbit_Car {
       buf[0] = RGB_Light_Right;
       buf[1] = value;
       pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
+      if(value == enColor_RGB.OFF)
+        {
+          for(let i = 0;i<2;i++)
+          {
+            pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);//发送多次，防止橙色
+            basic.pause(1)//延迟1ms
+          }
+        }
   }
 
     function BBEP_OFF():void{
