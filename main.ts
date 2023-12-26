@@ -27,7 +27,7 @@ namespace Microbit_Car {
         //% blockId="Yellow" block="Yellow"
         Yellow,
         //% blockId="Orange" block="Orange"
-        Orange=3,
+        Orange,
         //% blockId="Purper" block="Purper"
         Purper,
         //% blockId="Lake" block="Lake"
