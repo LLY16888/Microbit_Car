@@ -171,7 +171,7 @@ namespace Microbit_Car {
         buf[0] = RGB_Light;
         buf[1] = value;
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
-        if(value == enColor_RGB.OFF)
+        if(value != enColor_RGB.Orange)
         {
           for(let i = 0;i<2;i++)
           {
@@ -191,7 +191,7 @@ namespace Microbit_Car {
       buf[0] = RGB_Light_Left;
       buf[1] = value;
       pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
-      if(value == enColor_RGB.OFF)
+      if(value != enColor_RGB.Orange)
         {
           for(let i = 0;i<2;i++)
           {
@@ -211,7 +211,7 @@ namespace Microbit_Car {
       buf[0] = RGB_Light_Right;
       buf[1] = value;
       pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
-      if(value == enColor_RGB.OFF)
+      if(value != enColor_RGB.Orange)
         {
           for(let i = 0;i<2;i++)
           {
