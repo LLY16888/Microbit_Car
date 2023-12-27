@@ -855,6 +855,14 @@ namespace makerbit {
     background.schedule(notifyIrEvents, background.Thread.Priority, background.Mode.Repeat, REPEAT_TIMEOUT_MS);
   }
 
+  //% blockId="SET_IR_Key_Value"
+  //% block="SET_IR_Key_Value|Button %Button|key_value %Value"
+  //% Value.min = 0 Value.max = 255
+  //% weight=90
+  export function SET_IRKey_Value(Button:IrButton,Value:number): void {
+    Button = Value
+  }
+
   function notifyIrEvents() {
     if (irState.activeCommand === -1) {
       // skip to save CPU cylces

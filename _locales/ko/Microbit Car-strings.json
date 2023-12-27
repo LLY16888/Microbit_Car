@@ -79,6 +79,7 @@
   "makerbit|block":"ICBANQ RC카 리모컨",
   "{id:category}makerbit":"ICBANQ RC카 리모컨",
   "makerbit.connectIrReceiver|block": "적외선 수신기를 핀에 연결 %pin",
+  "makerbit.SET_IRKey_Value|block": "적외선 키 값 설정 %Button|키 값 %Value",
   "makerbit.onIrButton|block": "버튼 | %button | %action",
   "IrButtonAction.Pressed|block": "누르기",
   "IrButtonAction.Released|block": "풀어"
