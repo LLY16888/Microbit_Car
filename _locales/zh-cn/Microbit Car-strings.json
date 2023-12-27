@@ -84,7 +84,6 @@
   "makerbit|block":"ICBANQ 遥控车遥控器",
   "{id:category}makerbit":"ICBANQ 遥控车遥控器",
   "makerbit.connectIrReceiver|block": "连接红外接收器到引脚 %pin",
-  "makerbit.SET_IRKey_Value|block": "设置红外的键值|按键 %Button|按键值 %Value",
   "makerbit.onIrButton|block": "当按钮 | %button | %action",
   "IrButtonAction.Pressed|block": "按下",
   "IrButtonAction.Released|block": "松开"
