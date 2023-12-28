@@ -332,7 +332,7 @@ namespace Microbit_Car {
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
     }
 
-    //% blockId=Microbit_GPIO_OutPut block="Microbit_GPIO_OutPut|Pin %value|value %price"
+    //% blockId=Microbit_GPIO_OutPut block="GPIO OutPut |Pin %value|Digital Write %price"
     //% weight=98
     //% blockGap=10
     //% group="PIN control"
@@ -361,7 +361,7 @@ namespace Microbit_Car {
 
     }
 
-    //% blockId=Microbit_GPIO_OutPut_Analog block="Microbit_GPIO_OutPut_Analog|Pin %value|value %price"
+    //% blockId=Microbit_GPIO_OutPut_Analog block="GPIO OutPut |Pin %value|Analog Write %price"
     //% weight=98
     //% blockGap=10
     //% group="PIN control"
@@ -390,7 +390,7 @@ namespace Microbit_Car {
 
     }
 
-    //% blockId=Microbit_GPIO_InPut block="Microbit_GPIO_InPut|Pin %value|Read_Mode %mode"
+    //% blockId=Microbit_GPIO_InPut block="GPIO Input |Pin %value|Read %mode"
     //% weight=98
     //% blockGap=10
     //% group="PIN control"
