@@ -314,13 +314,13 @@ namespace Microbit_Car {
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
     }
 
-    //% blockId=Set_PWM_Servo block="Set_PWM_Servo(S1-S4)|servo %value|angle %angle"
+    //% blockId=Set_PWM_Servo_180 block="Set_PWM_Servo_180(S1-S4)|servo %value|angle %angle"
     //% weight=98
     //% blockGap=10
     //% group="Servo control"
     //% angle.min=0 angle.max=180 
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function Set_PWM_Servo(value:enServo_ID_PWM,angle:number): void {
+    export function Set_PWM_Servo_180(value:enServo_ID_PWM,angle:number): void {
         //范围限制
         if(angle>180) angle = 180;
         else if(angle<0) angle = 0;
@@ -331,6 +331,46 @@ namespace Microbit_Car {
         buf[2] = angle;
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
     }
+
+    //% blockId=Set_PWM_Servo_270 block="Set_PWM_Servo_270(S1-S4)|servo %value|angle %angle"
+    //% weight=98
+    //% blockGap=10
+    //% group="Servo control"
+    //% angle.min=0 angle.max=270
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function Set_PWM_Servo_270(value:enServo_ID_PWM,angle:number): void {
+      //范围限制
+      if(angle>270) angle = 270;
+      else if(angle<0) angle = 0;
+      angle = angle/270 * 180; //固件只有180的驱动
+      angle = Math.round(angle) //4舍5入法
+
+      let buf = pins.createBuffer(3);
+      buf[0] = SERVO_STATE;
+      buf[1] = value;
+      buf[2] = angle;
+      pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
+  }
+
+    //% blockId=Set_PWM_Servo_360 block="Set_PWM_Servo_360(S1-S4)|servo %value|angle %angle"
+    //% weight=98
+    //% blockGap=10
+    //% group="Servo control"
+    //% angle.min=0 angle.max=360 
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function Set_PWM_Servo_360(value:enServo_ID_PWM,angle:number): void {
+      //范围限制
+      if(angle>360) angle = 360;
+      else if(angle<0) angle = 0;
+      angle = angle/360 * 180; //固件只有180的驱动
+      angle = Math.round(angle) //4舍5入法
+
+      let buf = pins.createBuffer(3);
+      buf[0] = SERVO_STATE;
+      buf[1] = value;
+      buf[2] = angle;
+      pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
+  }
 
     //% blockId=Microbit_GPIO_OutPut block="GPIO OutPut |Pin %value|Digital Write %price"
     //% weight=98
