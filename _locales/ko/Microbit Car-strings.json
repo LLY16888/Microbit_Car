@@ -1,21 +1,21 @@
 {
 
-  "Microbit_Car|block":"ICBANQ RC카",
-  "{id:category}Microbit_Car":"ICBANQ RC카",
+  "Microbit_Car|block":"COVOLT",
+  "{id:category}Microbit_Car":"COVOLT",
 
-  "{id:group}LED control": "전조등 제어",
-  "{id:group}Buzzer control": "버저 제어",
+  "{id:group}LED control": "LED 제어",
+  "{id:group}Buzzer control": "부저 제어",
   "{id:group}Motor control": "모터 제어",
-  "{id:group}Servo control": "조타기 제어",
+  "{id:group}Servo control": "서보모터 제어",
   "{id:group}PIN control": "핀 제어",
-  "{id:group}Tracking sensor": "순선 센서",
+  "{id:group}Tracking sensor": "적외선 라인 센서",
   "{id:group}K210 sensor": "k210 센서",
   "{id:group}Sonar sensor": "초음파 센서",
   "{id:group}Other": "기타",
 
-  "Microbit_Car.RGB_Car_Big|block":"작은 전조등|헤드라이트 색상 선택 %value",
-  "Microbit_Car.RGB_Car_Big_Left|block":"작은 전조등(Left)|헤드라이트 색상 선택 %value",
-  "Microbit_Car.RGB_Car_Big_Right|block":"작은 전조등(Right)|헤드라이트 색상 선택 %value",
+  "Microbit_Car.RGB_Car_Big|block":"전조등|헤드라이트 색상 선택 %value",
+  "Microbit_Car.RGB_Car_Big_Left|block":"전조등(Left)|헤드라이트 색상 선택 %value",
+  "Microbit_Car.RGB_Car_Big_Right|block":"전조등(Right)|헤드라이트 색상 선택 %value",
   "Microbit_Car.BEEP_Sound|block":"부저 소리 %Timbre |음을 시간(ms) %time 동안 재생",
   "Microbit_Car.Car_Sport|block":"자동차 움직이기 %value|속도 %speed",
   "Microbit_Car.Car_Sport_motor|block":"왼쪽 바퀴|속도  %speed_L|오른쪽 바퀴 속도 %speed_R",
@@ -41,7 +41,7 @@
   "Microbit_Car.enColor_RGB.Yellow|block":"노란색",
   "Microbit_Car.enColor_RGB.Orange|block":"주황색",
   "Microbit_Car.enColor_RGB.Purper|block":"보라색",
-  "Microbit_Car.enColor_RGB.Lake|block":"인디고",
+  "Microbit_Car.enColor_RGB.Lake|block":"하늘색",
   "Microbit_Car.enColor_RGB.White|block":"흰색",
   "Microbit_Car.enCAR_STATE.STOP|block":"멈추기 ",
   "Microbit_Car.enCAR_STATE.RUN|block":"앞으로",
@@ -78,12 +78,12 @@
   "Microbit_Car.enIRtrack_Position.Right|block":"오른쪽",
   "Microbit_Car.enIRtrack_Position.RightMost|block":"맨 오른쪽",
 
-  "makerbit|block":"ICBANQ RC카 리모컨",
-  "{id:category}makerbit":"ICBANQ RC카 리모컨",
+  "makerbit|block":"리모컨",
+  "{id:category}makerbit":"리모컨",
   "makerbit.connectIrReceiver|block": "적외선 수신기를 핀에 연결 %pin",
   "makerbit.onIrButton|block": "버튼 | %button | %action",
   "IrButtonAction.Pressed|block": "누르기",
-  "IrButtonAction.Released|block": "풀어"
+  "IrButtonAction.Released|block": "놓기"
 
   
 
