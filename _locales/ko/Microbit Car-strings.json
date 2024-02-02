@@ -29,7 +29,7 @@
   "Microbit_Car.Ultrasonic_CarV2|block":"[V2] 초음파 센서 거리 측정값(cm)",
   "Microbit_Car.Deal_irtrack_data|block":"적외선 라인 센서 측정하기",
   "Microbit_Car.Track_Line|block":"적외선 라인 센서 %pos|감지색 %value ",
-  "Microbit_Car.Save_Tracking_value|block":"저장 적외선 라인 센서 %pos",
+  "Microbit_Car.Save_Tracking_value|block":"적외선 라인 센서 값 %pos",
   "Microbit_Car.Microbit_GPIO_OutPut|block":"GPIO 출력 핀 %value|디지털 출력 값 %price",
   "Microbit_Car.Microbit_GPIO_OutPut_Analog|block":"GPIO 출력 핀 %value|아날로그 출력 값 %price",
   "Microbit_Car.Microbit_GPIO_InPut|block":"GPIO 입력 핀 %value|값 읽기 %mode",
