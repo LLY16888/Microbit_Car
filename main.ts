@@ -159,6 +159,11 @@ namespace Microbit_Car {
     Analog = 1
 }
 
+    function myabs(a:number):number
+    {
+      if(a<0) return -a
+        return a
+    }
 
 
     //% blockId=RGB_Car_Big block="Car headlight|value %value"
@@ -287,29 +292,42 @@ namespace Microbit_Car {
     //% speed_L.min=-1000 speed_L.max=1000 speed_R.min=-1000 speed_R.max=1000 
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Car_Sport_motor(speed_L:number,speed_R:number): void {
-        // //范围限制
-        // if(speed_L>1000) speed_L =1000;
-        // else if(speed_L<-1000) speed_L = -1000;
-        // if(speed_R>1000) speed_R =1000;
-        // else if(speed_R<-1000) speed_R = -1000;
+        //范围限制
+        if(speed_L>1000) speed_L =1000;
+        else if(speed_L<-1000) speed_L = -1000;
+
+        if(speed_R>1000) speed_R =1000;
+        else if(speed_R<-1000) speed_R = -1000;
+
+        let speed_L_send,speed_R_send;
+        speed_L_send = myabs(speed_L);//把负数转成正数
+        speed_R_send = myabs(speed_R);//把负数转成正数
 
 
         let buf = pins.createBuffer(7);
         buf[0] = MOTOR_SPEED;
-        
+
+        //确定方向
         //左边电机
-        buf[1] = (speed_L >>8) &0x0F;
-        buf[2] = speed_L &0x00FF;
         if(speed_L < 0)
             buf[3] = 1;  //反转
         else buf[3] = 0; //正转
-
         //右边电机
-        buf[4] = (speed_R >>8) & 0x0F;
-        buf[5] = speed_R & 0x00FF;
         if(speed_R < 0)
             buf[6] = 1; //反转
         else buf[6] = 0;//正转
+        
+
+        //确定速度
+        //左边电机
+        buf[1] = (speed_L_send >>8) &0x00FF;
+        buf[2] = speed_L_send &0x00FF;
+        
+
+        //右边电机
+        buf[4] = (speed_R_send >>8) & 0x00FF;
+        buf[5] = speed_R_send & 0x00FF;
+        
 
         pins.i2cWriteBuffer(Microbit_Car_ADDR, buf);
     }
