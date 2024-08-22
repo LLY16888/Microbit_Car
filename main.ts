@@ -287,11 +287,11 @@ namespace Microbit_Car {
     //% speed_L.min=-1000 speed_L.max=1000 speed_R.min=-1000 speed_R.max=1000 
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Car_Sport_motor(speed_L:number,speed_R:number): void {
-        //范围限制
-        if(speed_L>1000) speed_L =1000;
-        else if(speed_L<-1000) speed_L = -1000;
-        if(speed_R>1000) speed_R =1000;
-        else if(speed_R<-1000) speed_R = -1000;
+        // //范围限制
+        // if(speed_L>1000) speed_L =1000;
+        // else if(speed_L<-1000) speed_L = -1000;
+        // if(speed_R>1000) speed_R =1000;
+        // else if(speed_R<-1000) speed_R = -1000;
 
 
         let buf = pins.createBuffer(7);
