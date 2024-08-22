@@ -5,7 +5,7 @@
 
   "{id:group}LED control": "LED 제어",
   "{id:group}Buzzer control": "부저 제어",
-  "{id:group}Motor control": "모터 제어",
+  "{id:group}Motor control": "DC 모터 제어",
   "{id:group}Servo control": "서보모터 제어",
   "{id:group}PIN control": "핀 제어",
   "{id:group}Tracking sensor": "적외선 라인 센서",
