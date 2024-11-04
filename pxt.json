@@ -1,7 +1,7 @@
 {
-    "name": "Microbit Car",
+    "name": "Covolt",
     "version": "0.0.1",
-    "description": "Microbit Car for YahBoom",
+    "description": "Covolt for ICBANQ",
     "license": "MIT",
     "dependencies": {
         "core": "*",
@@ -17,5 +17,6 @@
     "testFiles": [
         "test.ts"
     ],
+    "preferredEditor": "tsprj",
     "public": true
 }
