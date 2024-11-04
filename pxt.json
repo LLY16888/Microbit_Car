@@ -11,8 +11,8 @@
     "files": [
         "README.md",
         "main.ts",
-        "_locales/zh-cn/Microbit Car-strings.json",
-        "_locales/ko/Microbit Car-strings.json"
+        "_locales/zh-cn/Covolt-strings.json",
+        "_locales/ko/Covolt-strings.json"
     ],
     "testFiles": [
         "test.ts"
