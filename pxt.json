@@ -1,7 +1,7 @@
 {
     "name": "Covolt",
     "version": "0.0.2",
-    "description": "ICBANQ에서 제작한 마이크로비트 RC카 Covolt 확장블록 입니다",
+    "description": "ICBANQ에서 제작한 마이크로비트 RC카 Covolt 확장블록 입니다.",
     "license": "MIT",
     "dependencies": {
         "core": "*",
